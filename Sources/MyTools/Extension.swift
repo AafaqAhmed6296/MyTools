@@ -210,11 +210,23 @@ extension UIView {
         widthAnchor.constraint(equalToConstant: width).isActive = true
     }
     
-    public func fillSuperview() {
+    public func fillSuperview(padding: UIEdgeInsets = .zero) {
         translatesAutoresizingMaskIntoConstraints = false
-        guard let view = superview else { return }
-        anchor(top: view.topAnchor, leading: view.leadingAnchor,
-               bottom: view.bottomAnchor, trailing: view.trailingAnchor)
+        if let superviewTopAnchor = superview?.topAnchor {
+            topAnchor.constraint(equalTo: superviewTopAnchor, constant: padding.top).isActive = true
+        }
+        
+        if let superviewBottomAnchor = superview?.bottomAnchor {
+            bottomAnchor.constraint(equalTo: superviewBottomAnchor, constant: -padding.bottom).isActive = true
+        }
+        
+        if let superviewLeadingAnchor = superview?.leadingAnchor {
+            leadingAnchor.constraint(equalTo: superviewLeadingAnchor, constant: padding.left).isActive = true
+        }
+        
+        if let superviewTrailingAnchor = superview?.trailingAnchor {
+            trailingAnchor.constraint(equalTo: superviewTrailingAnchor, constant: -padding.right).isActive = true
+        }
     }
     
     public func dropShadow(color: UIColor, opacity: Float = 0.5, offSet: CGSize, radius: CGFloat = 1, scale: Bool = true) {
