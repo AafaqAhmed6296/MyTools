@@ -2,18 +2,11 @@
 /// My Tools made for ease.
 
 import UIKit
+import JGProgressHUD
 
-extension UIView {
-    public func dropShadow(color: UIColor, opacity: Float = 0.5, offSet: CGSize, radius: CGFloat = 1, scale: Bool = true) {
-        layer.masksToBounds = true
-        layer.shadowColor = color.cgColor
-        layer.shadowOpacity = opacity
-        layer.shadowOffset = offSet
-        layer.shadowRadius = radius
-        
-        layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        layer.shouldRasterize = true
-        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+extension UIColor {
+    static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
+        return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
     }
 }
 
@@ -36,6 +29,18 @@ extension UIImageView {
 
 
 extension UIViewController {
+    
+    static let hud = JGProgressHUD(style: .dark)
+    
+    func showLoader(_ show: Bool) {
+        view.endEditing(true)
+        
+        if show {
+            UIViewController.hud.show(in: view)
+        }else {
+            UIViewController.hud.dismiss(animated: true)
+        }
+    }
     
     public func showMessage(withTitle title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -109,6 +114,9 @@ extension UILabel {
     
 }
 
+struct AnchoredConstraints {
+    var top, leading, bottom, trailing, width, height: NSLayoutConstraint?
+}
 
 extension UIView {
     
@@ -117,43 +125,47 @@ extension UIView {
         layer.masksToBounds = true
     }
     
-    
-    public func anchor(top: NSLayoutYAxisAnchor? = nil,
-                              left: NSLayoutXAxisAnchor? = nil,
+    @discardableResult
+    func anchor(top: NSLayoutYAxisAnchor? = nil,
+                              leading: NSLayoutXAxisAnchor? = nil,
                               bottom: NSLayoutYAxisAnchor? = nil,
-                              right: NSLayoutXAxisAnchor? = nil,
+                              trailing: NSLayoutXAxisAnchor? = nil,
                               paddingTop: CGFloat = 0,
                               paddingLeft: CGFloat = 0,
                               paddingBottom: CGFloat = 0,
                               paddingRight: CGFloat = 0,
                               width: CGFloat? = nil,
-                              height: CGFloat? = nil) {
+                              height: CGFloat? = nil) -> AnchoredConstraints {
         
         translatesAutoresizingMaskIntoConstraints = false
+        var anchoredConstraints = AnchoredConstraints()
         
         if let top = top {
-            topAnchor.constraint(equalTo: top, constant: paddingTop).isActive = true
+            anchoredConstraints.top = topAnchor.constraint(equalTo: top, constant: paddingTop)
         }
         
-        if let left = left {
-            leftAnchor.constraint(equalTo: left, constant: paddingLeft).isActive = true
-        }
+        if let leading = leading {
+            anchoredConstraints.leading = leadingAnchor.constraint(equalTo: leading, constant: paddingLeft)        }
         
         if let bottom = bottom {
-            bottomAnchor.constraint(equalTo: bottom, constant: -paddingBottom).isActive = true
+            anchoredConstraints.bottom = bottomAnchor.constraint(equalTo: bottom, constant: -paddingBottom)
         }
         
-        if let right = right {
-            rightAnchor.constraint(equalTo: right, constant: -paddingRight).isActive = true
+        if let trailing = trailing {
+            anchoredConstraints.trailing = rightAnchor.constraint(equalTo: trailing, constant: -paddingRight)
         }
         
         if let width = width {
-            widthAnchor.constraint(equalToConstant: width).isActive = true
+            anchoredConstraints.width = widthAnchor.constraint(equalToConstant: width)
         }
         
         if let height = height {
-            heightAnchor.constraint(equalToConstant: height).isActive = true
+            anchoredConstraints.height = heightAnchor.constraint(equalToConstant: height)
         }
+        
+        [anchoredConstraints.top, anchoredConstraints.leading, anchoredConstraints.bottom, anchoredConstraints.trailing, anchoredConstraints.width, anchoredConstraints.height].forEach{ $0?.isActive = true}
+        
+        return anchoredConstraints
     }
     
     public func center(inView view: UIView, yConstant: CGFloat? = 0) {
@@ -171,14 +183,14 @@ extension UIView {
         }
     }
     
-    public func centerY(inView view: UIView, leftAnchor: NSLayoutXAxisAnchor? = nil,
+    public func centerY(inView view: UIView, leadingAnchor: NSLayoutXAxisAnchor? = nil,
                                paddingLeft: CGFloat = 0, constant: CGFloat = 0) {
         
         translatesAutoresizingMaskIntoConstraints = false
         centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: constant).isActive = true
         
-        if let left = leftAnchor {
-            anchor(left: left, paddingLeft: paddingLeft)
+        if let leading = leadingAnchor {
+            anchor(leading: leading, paddingLeft: paddingLeft)
         }
     }
     
@@ -201,8 +213,20 @@ extension UIView {
     public func fillSuperview() {
         translatesAutoresizingMaskIntoConstraints = false
         guard let view = superview else { return }
-        anchor(top: view.topAnchor, left: view.leftAnchor,
-               bottom: view.bottomAnchor, right: view.rightAnchor)
+        anchor(top: view.topAnchor, leading: view.leadingAnchor,
+               bottom: view.bottomAnchor, trailing: view.trailingAnchor)
+    }
+    
+    public func dropShadow(color: UIColor, opacity: Float = 0.5, offSet: CGSize, radius: CGFloat = 1, scale: Bool = true) {
+        layer.masksToBounds = true
+        layer.shadowColor = color.cgColor
+        layer.shadowOpacity = opacity
+        layer.shadowOffset = offSet
+        layer.shadowRadius = radius
+        
+        layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        layer.shouldRasterize = true
+        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
 }
 
