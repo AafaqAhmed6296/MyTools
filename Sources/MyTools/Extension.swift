@@ -114,7 +114,7 @@ extension UILabel {
     
 }
 
-struct AnchoredConstraints {
+public struct AnchoredConstraints {
     var top, leading, bottom, trailing, width, height: NSLayoutConstraint?
 }
 
@@ -126,6 +126,7 @@ extension UIView {
     }
     
     @discardableResult
+    public
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                               leading: NSLayoutXAxisAnchor? = nil,
                               bottom: NSLayoutYAxisAnchor? = nil,
