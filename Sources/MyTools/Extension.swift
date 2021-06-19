@@ -153,7 +153,7 @@ extension UIView {
         }
         
         if let trailing = trailing {
-            anchoredConstraints.trailing = rightAnchor.constraint(equalTo: trailing, constant: -paddingRight)
+            anchoredConstraints.trailing = trailingAnchor.constraint(equalTo: trailing, constant: -paddingRight)
         }
         
         if let width = width {
