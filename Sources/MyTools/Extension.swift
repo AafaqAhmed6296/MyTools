@@ -65,6 +65,13 @@ extension UIViewController {
         
     }
     
+    public func setupTwoColorGradientLayer(withColors colors: [Any]?, locations: [NSNumber]?) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = colors
+        gradientLayer.locations = locations
+        view.layer.addSublayer(gradientLayer)
+        gradientLayer.frame = view.bounds
+    }
     
     /// This will clear all text fields in the view
     public  func clearAllTexts(){
