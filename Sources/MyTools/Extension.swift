@@ -31,15 +31,16 @@ extension UIImageView {
 extension UIViewController {
     
     public static let hud = JGProgressHUD(style: .dark)
+    public static let selfDismissHud = JGProgressHUD(style: .dark)
     
     public func showHUD(_ show: Bool, withTitle title: String?, error: Error?) {
         view.endEditing(true)
         
         if let err = error {
-            UIViewController.hud.textLabel.text = title
-            UIViewController.hud.detailTextLabel.text = err.localizedDescription
-            UIViewController.hud.show(in: view)
-            UIViewController.hud.dismiss(afterDelay: 10)
+            UIViewController.selfDismissHud.textLabel.text = title
+            UIViewController.selfDismissHud.detailTextLabel.text = err.localizedDescription
+            UIViewController.selfDismissHud.show(in: view)
+            UIViewController.selfDismissHud.dismiss(afterDelay: 4)
             Debug.log(message: "Wtih error", variable: nil)
         }
         else if let title = title {
