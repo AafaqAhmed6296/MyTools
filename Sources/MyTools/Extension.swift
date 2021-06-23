@@ -40,14 +40,18 @@ extension UIViewController {
             UIViewController.hud.detailTextLabel.text = err.localizedDescription
             UIViewController.hud.show(in: view)
             UIViewController.hud.dismiss(afterDelay: 4)
+            Debug.log(message: "Wtih error", variable: nil)
         }
         else if let title = title {
             UIViewController.hud.textLabel.text = title
             UIViewController.hud.show(in: view)
+            Debug.log(message: "with title only", variable: nil)
         }
         else if show {
             UIViewController.hud.show(in: view)
+            Debug.log(message: "Without any thing", variable: nil)
         }else {
+            Debug.log(message: "Dismiss it", variable: nil)
             UIViewController.hud.dismiss(animated: true)
         }
     }
