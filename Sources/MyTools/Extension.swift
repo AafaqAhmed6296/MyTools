@@ -65,7 +65,7 @@ extension UIViewController {
         
     }
     
-    public func setupTwoColorGradientLayer(withColors colors: [Any]?, locations: [NSNumber]?) {
+    public func setupTwoColorGradientLayer(withColors colors: [Any]?, locations: [NSNumber]?, gradientLayer: inout CAGradientLayer?) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = colors
         gradientLayer.locations = locations
