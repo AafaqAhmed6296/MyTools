@@ -5,6 +5,9 @@
 //  Created by Aafaq Ahmed on 23/06/2021.
 //
 
+
+import Foundation
+
 ///This property wrapper will truncate the leading and trailing spaces from string
 ///
 ///To use this you have to wrap the property with this property wrapper, for example if you have a following property
@@ -17,7 +20,6 @@
  @Trimmed var title: String
 ```
 */
-import Foundation
 @propertyWrapper
 public struct Trimmed {
     var value: String!
