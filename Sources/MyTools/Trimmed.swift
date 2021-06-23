@@ -1,5 +1,5 @@
 //
-//  Trim.swift
+//  Trimmed.swift
 //  
 //
 //  Created by Aafaq Ahmed on 23/06/2021.
@@ -19,7 +19,7 @@
 */
 import Foundation
 @propertyWrapper
-struct Trimmed {
+public struct Trimmed {
     var value: String!
     let characterSet: CharacterSet
     
