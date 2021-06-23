@@ -32,10 +32,20 @@ extension UIViewController {
     
     static let hud = JGProgressHUD(style: .dark)
     
-    func showLoader(_ show: Bool) {
+    func showHUD(_ show: Bool, withTitle title: String?, error: Error?) {
         view.endEditing(true)
         
-        if show {
+        if let err = error {
+            UIViewController.hud.textLabel.text = title
+            UIViewController.hud.detailTextLabel.text = err.localizedDescription
+            UIViewController.hud.show(in: view)
+            UIViewController.hud.dismiss(afterDelay: 4)
+        }
+        else if let title = title {
+            UIViewController.hud.textLabel.text = title
+            UIViewController.hud.show(in: view)
+        }
+        else if show {
             UIViewController.hud.show(in: view)
         }else {
             UIViewController.hud.dismiss(animated: true)

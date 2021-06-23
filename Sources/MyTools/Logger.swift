@@ -5,7 +5,11 @@
 
 
 public struct Debug {
-    public static func log(title: String, variable: Any) {
-        print("DEBUG, \(title):", variable)
+    public static func log(message: String, variable: Any?) {
+        if variable == nil {
+            print("DEBUG, \(message)")
+        }else{
+            print("DEBUG, \(message):", variable!)
+        }
     }
 }
