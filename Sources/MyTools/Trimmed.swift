@@ -23,12 +23,12 @@ public struct Trimmed {
     var value: String!
     let characterSet: CharacterSet
     
-    var wrappedValue: String {
+    public var wrappedValue: String {
         get { value }
         set { value = newValue.trimmingCharacters(in: characterSet) }
     }
     
-    init(wrappedValue: String) {
+    public init(wrappedValue: String) {
         self.characterSet = .whitespacesAndNewlines
         self.wrappedValue = wrappedValue
     }
