@@ -5,7 +5,7 @@ import UIKit
 import JGProgressHUD
 
 extension UIColor {
-    static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
+    public static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
     }
 }
@@ -30,9 +30,9 @@ extension UIImageView {
 
 extension UIViewController {
     
-    static let hud = JGProgressHUD(style: .dark)
+    public static let hud = JGProgressHUD(style: .dark)
     
-    func showHUD(_ show: Bool, withTitle title: String?, error: Error?) {
+    public func showHUD(_ show: Bool, withTitle title: String?, error: Error?) {
         view.endEditing(true)
         
         if let err = error {
