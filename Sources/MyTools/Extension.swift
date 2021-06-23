@@ -39,7 +39,7 @@ extension UIViewController {
             UIViewController.hud.textLabel.text = title
             UIViewController.hud.detailTextLabel.text = err.localizedDescription
             UIViewController.hud.show(in: view)
-            UIViewController.hud.dismiss(afterDelay: 4)
+            UIViewController.hud.dismiss(afterDelay: 10)
             Debug.log(message: "Wtih error", variable: nil)
         }
         else if let title = title {
