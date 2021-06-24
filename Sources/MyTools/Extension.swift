@@ -93,11 +93,18 @@ extension UIViewController {
     }
     
     /// This will clear all text fields in the view
-    public  func clearAllTexts(){
+    public  func clearAllTextField(){
         for view in self.view.subviews{
             if view is UITextField{
                 let field: UITextField = view as! UITextField
                 field.text = ""
+            }else if view is UIStackView {
+                for stackSubView in (view as! UIStackView).arrangedSubviews{
+                    if stackSubView is UITextField {
+                        let field: UITextField = view as! UITextField
+                        field.text = ""
+                    }
+                }
             }
         }
     }
