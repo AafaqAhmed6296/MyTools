@@ -34,7 +34,7 @@ extension UIViewController {
     public static let dismissHud = JGProgressHUD(style: .dark)
     public static let selfDismissHud = JGProgressHUD(style: .dark)
     
-    public func showHUD(_ show: Bool, withTitle title: String?, error: Error?) {
+    public func showHUD(_ show: Bool, withTitle title: String? = nil, error: Error? = nil) {
         view.endEditing(true)
         
         if let err = error {
