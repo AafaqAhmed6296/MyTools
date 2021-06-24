@@ -31,16 +31,17 @@ extension UIImageView {
 extension UIViewController {
     
     public static let hud = JGProgressHUD(style: .dark)
+    public static let dismissHud = JGProgressHUD(style: .dark)
     public static let selfDismissHud = JGProgressHUD(style: .dark)
     
     public func showHUD(_ show: Bool, withTitle title: String?, error: Error?) {
         view.endEditing(true)
         
         if let err = error {
-            UIViewController.selfDismissHud.textLabel.text = title
-            UIViewController.selfDismissHud.detailTextLabel.text = err.localizedDescription
-            UIViewController.selfDismissHud.show(in: view)
-            UIViewController.selfDismissHud.dismiss(afterDelay: 4)
+            UIViewController.dismissHud.textLabel.text = title
+            UIViewController.dismissHud.detailTextLabel.text = err.localizedDescription
+            UIViewController.dismissHud.show(in: view)
+            UIViewController.dismissHud.dismiss(afterDelay: 4)
         }
         else if let title = title {
             UIViewController.hud.textLabel.text = title
@@ -51,6 +52,12 @@ extension UIViewController {
         }else {
             UIViewController.hud.dismiss(animated: true)
         }
+    }
+    
+    public func selfDismissHud(withTitle title: String) {
+        UIViewController.selfDismissHud.textLabel.text = title
+        UIViewController.selfDismissHud.show(in: view)
+        UIViewController.selfDismissHud.dismiss(afterDelay: 4)
     }
     
     public func showMessage(withTitle title: String, message: String) {
