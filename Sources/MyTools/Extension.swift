@@ -54,10 +54,10 @@ extension UIViewController {
         }
     }
     
-    public func selfDismissHud(withTitle title: String) {
+    public func selfDismissHud(withTitle title: String, delay: TimeInterval = 2) {
         UIViewController.selfDismissHud.textLabel.text = title
         UIViewController.selfDismissHud.show(in: view)
-        UIViewController.selfDismissHud.dismiss(afterDelay: 4)
+        UIViewController.selfDismissHud.dismiss(afterDelay: delay)
     }
     
     public func showMessage(withTitle title: String, message: String) {
