@@ -120,7 +120,7 @@ extension UIButton {
         
         let attributedTitle = NSMutableAttributedString(string: "\(firstRegularString)", attributes: atts)
         
-        let boldAtts : [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor: secondBoldString,
+        let boldAtts : [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor: secondStringColor,
                                                         .font: UIFont.boldSystemFont(ofSize: 16)]
         attributedTitle.append(NSAttributedString(string: secondBoldString, attributes: boldAtts))
         
