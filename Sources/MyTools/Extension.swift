@@ -113,15 +113,15 @@ extension UIViewController {
 
 extension UIButton {
     
-    public func attributedTitle(firstRegularString: String, secondBoldString: String, firstStringColor: UIColor = UIColor.black, secondStringColor: UIColor=UIColor.black) {
+    public func attributedTitle(firstRegularString: String, secondBoldString: String, firstStringColor: UIColor = UIColor.black, secondStringColor: UIColor=UIColor.black, firstStringFont: UIFont=UIFont.systemFont(ofSize: 16), secondStringFont: UIFont=UIFont.boldSystemFont(ofSize: 16) ) {
         
         let atts : [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor: firstStringColor,
-                                                    .font: UIFont.systemFont(ofSize: 16)]
+                                                    .font: firstStringFont]
         
         let attributedTitle = NSMutableAttributedString(string: "\(firstRegularString)", attributes: atts)
         
         let boldAtts : [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor: secondStringColor,
-                                                        .font: UIFont.boldSystemFont(ofSize: 16)]
+                                                        .font: secondStringFont]
         attributedTitle.append(NSAttributedString(string: secondBoldString, attributes: boldAtts))
         
         setAttributedTitle(attributedTitle, for: .normal)
