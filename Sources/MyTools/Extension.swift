@@ -172,7 +172,7 @@ extension UIView {
                               height: CGFloat? = nil) -> AnchoredConstraints {
         
         translatesAutoresizingMaskIntoConstraints = false
-        public var anchoredConstraints = AnchoredConstraints()
+        var anchoredConstraints = AnchoredConstraints()
         
         if let top = top {
             anchoredConstraints.top = topAnchor.constraint(equalTo: top, constant: paddingTop)
