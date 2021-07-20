@@ -5,13 +5,13 @@ import UIKit
 import JGProgressHUD
 
 extension Int {
-    func format(f: String) -> String {
+    public func format(f: String) -> String {
         return String(format: "%\(f)f", self)
     }
 }
 
 extension Double {
-    func format(f: String) -> String {
+    public func format(f: String) -> String {
         return String(format: "%\(f)f", self)
     }
 }
