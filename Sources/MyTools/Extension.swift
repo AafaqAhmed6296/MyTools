@@ -4,6 +4,18 @@
 import UIKit
 import JGProgressHUD
 
+extension Int {
+    func format(f: String) -> String {
+        return String(format: "%\(f)f", self)
+    }
+}
+
+extension Double {
+    func format(f: String) -> String {
+        return String(format: "%\(f)f", self)
+    }
+}
+
 extension UIColor {
     public static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)

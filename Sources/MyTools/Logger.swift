@@ -7,9 +7,9 @@
 public struct Debug {
     public static func log(message: String, variable: Any?) {
         if variable == nil {
-            print("DEBUG, \(message)")
+            print("MyDEBUG, \(message)")
         }else{
-            print("DEBUG, \(message):", variable!)
+            print("MyDEBUG, \(message):", variable!)
         }
     }
 }
