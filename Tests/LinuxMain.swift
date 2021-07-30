@@ -1,7 +1,7 @@
 import XCTest
 
-import MyToolsTests
+import AAToolsTests
 
 var tests = [XCTestCaseEntry]()
-tests += MyToolsTests.allTests()
+tests += AAToolsTests.allTests()
 XCTMain(tests)

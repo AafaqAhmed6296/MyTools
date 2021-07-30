@@ -4,12 +4,12 @@
 import PackageDescription
 
 let package = Package(
-    name: "MyTools",
+    name: "AATools",
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "MyTools",
-            targets: ["MyTools"]),
+            name: "AATools",
+            targets: ["AATools"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -19,12 +19,12 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "MyTools",
+            name: "AATools",
             dependencies: [
                 "JGProgressHUD"
             ]),
         .testTarget(
-            name: "MyToolsTests",
-            dependencies: ["MyTools"]),
+            name: "AAToolsTests",
+            dependencies: ["AATools"]),
     ]
 )
