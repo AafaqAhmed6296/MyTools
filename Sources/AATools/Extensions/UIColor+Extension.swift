@@ -5,7 +5,7 @@
 //  Created by Aafaq on 08/12/2021.
 //
 
-import UIkit
+import UIKit
 
 extension UIColor {
     public static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
