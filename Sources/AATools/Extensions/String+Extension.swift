@@ -45,3 +45,32 @@ extension String {
     }
 
 }
+
+//MARK: - TextValidation
+
+extension String {
+    func isValidName() -> Bool {
+        let inputRegEx = "^[a-zA-Z\\_]{2,25}$"
+        let inputpred = NSPredicate(format: "SELF MATCHES %@", inputRegEx)
+        return inputpred.evaluate(with:self)
+    }
+    func isValidEmail() -> Bool {
+        let inputRegEx = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[A-Za-z]{2,64}"
+        let inputpred = NSPredicate(format: "SELF MATCHES %@", inputRegEx)
+        return inputpred.evaluate(with:self)
+    }
+    func isValidPhone() -> Bool {
+        let inputRegEx = "^((\\+)|(00))[0-9]{6,14}$"
+        let inputpred = NSPredicate(format: "SELF MATCHES %@", inputRegEx)
+        return inputpred.evaluate(with:self)
+    }
+    func isValidPassword() -> Bool {
+        let inputRegEx = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*()-_+={}?>.<,:;~`']{8,}$"
+        let inputpred = NSPredicate(format: "SELF MATCHES %@", inputRegEx)
+        return inputpred.evaluate(with:self)
+    }
+    
+    public func filterPhoneNumber() -> String {
+        return String(self.filter {!" ()._-\n\t\r".contains($0)})
+    }
+}
