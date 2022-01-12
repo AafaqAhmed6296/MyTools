@@ -105,7 +105,7 @@ extension UIView {
     }
     
     @discardableResult
-    public func setWidth(_ width: CGFloat) {
+    public func setWidth(_ width: CGFloat) -> UIView {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: width).isActive = true
         return self
