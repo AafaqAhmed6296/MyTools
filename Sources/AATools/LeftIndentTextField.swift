@@ -7,6 +7,7 @@
 
 import UIKit
 
+public
 class LeftIndentTextField: UITextField {
     
     init(leftSpacing: CGFloat = 12, color: UIColor = .white) {
