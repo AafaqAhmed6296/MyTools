@@ -98,6 +98,7 @@ extension UIViewController {
         self.view.addGestureRecognizer(tap)
     }
     
+    @objc
     public func handleDismiss() {
         self.view.endEditing(true)
         self.view.endEditing(false)
