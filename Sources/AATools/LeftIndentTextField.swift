@@ -18,6 +18,8 @@ class LeftIndentTextField: UITextField {
         leftView.backgroundColor = color
         self.leftView = leftView
         self.backgroundColor = color
+        self.layer.masksToBounds = true
+        self.leftViewMode = .always
     }
 
     override init(frame: CGRect) {
