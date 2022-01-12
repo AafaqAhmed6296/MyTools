@@ -162,3 +162,26 @@ extension UIView {
         return left + width
     }
 }
+
+extension UIView {
+    fileprivate func _stack(_ axis: NSLayoutConstraint.Axis = .vertical, views: [UIView], spacing: CGFloat=0, alignment: UIStackView.Alignment=.fill, distribution: UIStackView.Distribution=.fill) -> UIStackView {
+        let stackView = UIStackView(arrangedSubviews: views)
+        stackView.distribution = distribution
+        stackView.axis = axis
+        stackView.alignment = alignment
+        stackView.spacing = 0
+        addSubview(stackView)
+        stackView.fillSuperview()
+        return stackView
+    }
+    
+    @discardableResult
+    public func stack(_ views: UIView..., spacing: CGFloat=0, alignment: UIStackView.Alignment=.fill, distribution: UIStackView.Distribution=.fill) -> UIStackView {
+        return _stack(.vertical,views: views, spacing: spacing, alignment: alignment, distribution: distribution)
+    }
+    
+    @discardableResult
+    public func hstack(_ views: UIView..., spacing: CGFloat=0, alignment: UIStackView.Alignment=.fill, distribution: UIStackView.Distribution=.fill) -> UIStackView {
+        return _stack(.horizontal,views: views, spacing: spacing, alignment: alignment, distribution: distribution)
+    }
+}
