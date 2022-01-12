@@ -89,20 +89,26 @@ extension UIView {
         }
     }
     
-    public func setDimensions(height: CGFloat, width: CGFloat) {
+    @discardableResult
+    public func setDimensions(height: CGFloat, width: CGFloat) -> UIView {
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraint(equalToConstant: height).isActive = true
         widthAnchor.constraint(equalToConstant: width).isActive = true
+        return self
     }
     
-    public func setHeight(_ height: CGFloat) {
+    @discardableResult
+    public func setHeight(_ height: CGFloat) -> UIView {
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraint(equalToConstant: height).isActive = true
+        return self
     }
     
+    @discardableResult
     public func setWidth(_ width: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: width).isActive = true
+        return self
     }
     
     public func fillSuperview(padding: UIEdgeInsets = .zero) {
