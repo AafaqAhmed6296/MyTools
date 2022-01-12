@@ -90,3 +90,10 @@ extension UIViewController {
         }
     }
 }
+
+extension UIViewController {
+    public func dismissKeyboard() {
+        self.view.endEditing(true)
+        self.view.endEditing(false)
+    }
+}
