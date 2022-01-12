@@ -175,7 +175,7 @@ extension UIView {
         stackView.distribution = distribution
         stackView.axis = axis
         stackView.alignment = alignment
-        stackView.spacing = 0
+        stackView.spacing = spacing
         addSubview(stackView)
         stackView.fillSuperview()
         return stackView
