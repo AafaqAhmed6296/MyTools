@@ -10,11 +10,11 @@ import UIKit
 public
 class LeftIndentTextField: UITextField {
     
-    init(leftSpacing: CGFloat = 12, color: UIColor = .white) {
+    public init(leftSpacing: CGFloat = 12, color: UIColor = .white) {
         super.init(frame: .zero)
         
         let leftView = UIView()
-        leftView.setDimensions(height: 12, width: 12)
+        leftView.setWidth(leftSpacing)
         leftView.backgroundColor = color
         self.leftView = leftView
         self.backgroundColor = color
