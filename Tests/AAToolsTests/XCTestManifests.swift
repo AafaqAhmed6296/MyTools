@@ -4,7 +4,8 @@ import XCTest
 public func allTests() -> [XCTestCaseEntry] {
     return [
         testCase(AAToolsTests.allTests),
-        testCase(UIColorTests.allTests),
+        testCase(UIColorExtensionTests.allTests),
+        testCase(DoubleExtensionTests.allTests),
     ]
 }
 #endif
