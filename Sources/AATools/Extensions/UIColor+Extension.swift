@@ -21,21 +21,16 @@ extension UIColor {
     }
     
     /// Create a UIColor with the given hexValue
-    /// - Parameter hexValue: provide hexValue as a String
+    /// - Parameter hexValue: provide hexValue as a UInt32
     /// - For Example
     /// ```
-    /// let color = UIColor(hexValue: "#2980b9")
+    /// let color = UIColor(hexValue: 0x2980b9)
     /// ```
-    convenience init(hexValue: String) {
-        let actualHexValue = hexValue.replacingOccurrences(of: "#", with: "")
-        
-        var rgb: UInt64 = 0
-        Scanner(string: actualHexValue).scanHexInt64(&rgb)
-        
+    convenience init(hexValue: UInt64) {
         self.init(
-            red: (rgb >> 16) & 0xFF,
-            green: (rgb >> 8) & 0xFF,
-            blue: rgb & 0xFF
+            red: (hexValue & 0xFF0000) >> 16,
+            green: (hexValue & 0x00FF00) >> 8,
+            blue: hexValue & 0x0000FF
         )
     }
 
