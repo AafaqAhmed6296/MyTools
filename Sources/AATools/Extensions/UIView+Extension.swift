@@ -97,6 +97,10 @@ extension UIView {
         return self
     }
     
+    
+    /// Sets the height of view and return a view with settled height
+    /// - Parameter height: value you want to set for view's height
+    /// - Returns: A UIView with the setlled height value.
     @discardableResult
     public func setHeight(_ height: CGFloat) -> UIView {
         translatesAutoresizingMaskIntoConstraints = false
@@ -104,6 +108,9 @@ extension UIView {
         return self
     }
     
+    /// Sets the width of view and return a view with settled width
+    /// - Parameter width: value you want to set for view's width
+    /// - Returns: A UIView with the setlled width value.
     @discardableResult
     public func setWidth(_ width: CGFloat) -> UIView {
         translatesAutoresizingMaskIntoConstraints = false
@@ -111,6 +118,8 @@ extension UIView {
         return self
     }
     
+    /// Fill the view to it's superview.
+    /// - Parameter padding: padding you want's from the sides of superview.
     public func fillSuperview(padding: UIEdgeInsets = .zero) {
         translatesAutoresizingMaskIntoConstraints = false
         if let superviewTopAnchor = superview?.topAnchor {
@@ -144,26 +153,33 @@ extension UIView {
 }
 
 extension UIView {
+    
+    /// Get the width of view
     public var width: CGFloat {
         return frame.size.width
     }
     
+    /// Get the height of view
     public var height: CGFloat {
         return frame.size.height
     }
     
+    /// Get the top y value of view
     public var top: CGFloat {
         return frame.origin.y
     }
-
+    
+    /// Get the left x value of view
     public var left: CGFloat {
         return frame.origin.x
     }
-
+    
+    /// Get the bottom y value of view
     public var bottom: CGFloat {
         return top + height
     }
-
+    
+    /// Get the right x value of view
     public var right: CGFloat {
         return left + width
     }
