@@ -14,7 +14,7 @@ extension Double {
     /// - Parameter f: number of decimal places you want.
     /// - Returns: string in specified number of decimal places
     public func format(f: String) -> String {
-        return String(format: "%\(f)f", self)
+        return String(format: f, self)
     }
     
     /// Convert the double to int
