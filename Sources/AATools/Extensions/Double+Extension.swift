@@ -13,8 +13,8 @@ extension Double {
     /// This will formate the double in specified.
     /// - Parameter f: number of decimal places you want.
     /// - Returns: string in specified number of decimal places
-    public func format(f: String) -> String {
-        return String(format: "%\(f)f", self)
+    public func format(_ format: String) -> String {
+        return String(format: format, self)
     }
     
     /// Convert the double to int
