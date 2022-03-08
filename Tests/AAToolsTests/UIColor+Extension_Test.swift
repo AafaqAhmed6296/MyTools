@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  UIColor+Extension_Test.swift
 //  
 //
 //  Created by Aafaq on 08/03/2022.
@@ -9,7 +9,7 @@ import UIKit
 import XCTest
 @testable import AATools
 
-final class UIColorTests: XCTestCase {
+final class UIColorExtensionTests: XCTestCase {
     
     var rgbColor: UIColor!
     
