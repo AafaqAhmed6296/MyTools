@@ -13,6 +13,7 @@ final class DoubleExtensionTests: XCTestCase {
     var double: Double!
     
     override func setUp() {
+        super.setUp()
         double = 123.1234
     }
 

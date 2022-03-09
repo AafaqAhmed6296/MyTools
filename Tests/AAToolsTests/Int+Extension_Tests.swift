@@ -13,6 +13,7 @@ final class IntExtensionTests: XCTestCase {
     var int: Int!
     
     override func setUp() {
+        super.setUp()
         int = 123
     }
     

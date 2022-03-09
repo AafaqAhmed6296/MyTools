@@ -14,6 +14,7 @@ final class UIColorExtensionTests: XCTestCase {
     var rgbColor: UIColor!
     
     override func setUp() {
+        super.setUp()
         //rgba(52, 152, 219,1.0)
         rgbColor = UIColor(red: CGFloat(52) / 255, green: CGFloat(152) / 255, blue: CGFloat(219) / 255, alpha: 1.0)
     }
