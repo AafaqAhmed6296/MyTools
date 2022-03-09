@@ -15,6 +15,7 @@ final class CGRectTests: XCTestCase {
     var cgRect2 = CGRect(x: 1, y: 2, width: 3, height: 4)
     
     override func setUp() {
+        super.setUp()
         cgRect1 = CGRect(x: 1, y: 2, width: 3, height: 4)
         cgRect2 = CGRect(x: 1, y: 2, width: 3, height: 4)
     }

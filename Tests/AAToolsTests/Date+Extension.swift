@@ -13,6 +13,7 @@ final class DateExtensionTests: XCTestCase {
     var date: Date!
     
     override  func setUp() {
+        super.setUp()
         date = Date()
     }
     
