@@ -9,21 +9,34 @@ import UIKit
 extension Int {
     
     /// Convert Integer into specified fomat of string
-    /// - Parameter f: format you want string
-    /// - Returns: return the formatted stinrg of Int
+    /// - Parameter format: format you want string
+    /// - Returns: return the formatted string of Int
+    ///
     public func format(_ format: String) -> String {
-        return String(format: format, self)
+        String(format: format, self)
     }
     
     public func toDouble() -> Double {
-        return Double(self)
+        Double(self)
+    }
+    
+    public func toAuto() -> Double {
+        Double(self)
     }
     
     public func toString() -> String {
-        return "\(self)"
+        "\(self)"
+    }
+    
+    public func toAuto() -> String {
+        "\(self)"
     }
     
     public func toCGFloat() -> CGFloat {
-        return CGFloat(self)
+        CGFloat(self)
+    }
+    
+    public func toAuto() -> CGFloat {
+        CGFloat(self)
     }
 }
