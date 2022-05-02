@@ -6,10 +6,18 @@
 //
 
 import UIKit
+import CoreGraphics
 
-func + (lhs: CGRect, rhs: CGRect) -> CGRect {
-    
-    let rect = CGRect(x: lhs.minX + rhs.minX, y: lhs.minY + rhs.minY , width: rhs.width + lhs.width, height: lhs.height + rhs.height)
-    
-    return rect
+extension CGRect {
+    public
+    static func + (lhs: CGRect, rhs: CGRect) -> CGRect {
+        let rect = CGRect(
+            x: lhs.minX + rhs.minX,
+            y: lhs.minY + rhs.minY,
+            width: rhs.width + lhs.width,
+            height: lhs.height + rhs.height
+        )
+        return rect
+    }
 }
+
