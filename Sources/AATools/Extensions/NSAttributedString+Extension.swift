@@ -9,6 +9,32 @@ import UIKit
 
 extension NSAttributedString {
     
+    public
+    static func attributedString (
+        fString string1: String,
+        fSColor color1: UIColor,
+        fSFont font1: UIFont,
+        sString string2: String="",
+        sSColor color2: UIColor=UIColor.black,
+        sSFont font2: UIFont=UIFont.systemFont(ofSize: 16),
+        lineHeight: CGFloat=NSParagraphStyle().minimumLineHeight,
+        lineBreakMode: NSLineBreakMode = .byTruncatingTail
+    ) -> NSMutableAttributedString {
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.minimumLineHeight = lineHeight
+        paragraphStyle.maximumLineHeight = lineHeight
+        paragraphStyle.lineBreakMode = lineBreakMode
+        
+        let attString = NSMutableAttributedString(string: string1, attributes: [NSAttributedString.Key.font : font1, .foregroundColor: color1, .paragraphStyle: paragraphStyle ])
+        
+        if string2 != "" {
+            attString.append(NSAttributedString(string: string2, attributes: [NSAttributedString.Key.font : font2, .foregroundColor: color2, .paragraphStyle: paragraphStyle ]))
+        }
+        
+        return attString
+    }
+    
     public func sizeFittingWidth(_ w: CGFloat) -> CGSize {
         let textStorage = NSTextStorage(attributedString: self)
         let size = CGSize(width: w, height: CGFloat.greatestFiniteMagnitude)
@@ -27,25 +53,5 @@ extension NSAttributedString {
         let rect = layoutManager.usedRect(for: textContainer)
 
         return rect.integral.size
-    }
-    
-    /// This is still faulty not usable yet use String class function instead
-    private func estimatedSizeForString(widthOfLabel: CGFloat) -> CGRect? {
-        var range = NSRange(location: 0, length: self.string.count)
-        let attributes = self.attributes(at: 1, effectiveRange: &range)
-        
-        var extractedAttributes = [(attributes: [NSAttributedString.Key:Any], range: NSRange)]()
-        self.enumerateAttributes(in: NSRange(location: 0, length: self.length - (self.length - 1)), options: NSAttributedString.EnumerationOptions(rawValue: 0)) { (dict, range, stopEnumerating) in
-            extractedAttributes.append((attributes: dict, range: range))
-        }
-        
-        if let attribute = extractedAttributes.first(where: { $0.range == NSRange(location: 0, length: self.length - (self.length - 1))}) {
-            let size = CGSize(width: widthOfLabel, height: 1000)
-            let estimatedFrame = NSString(string: string).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attribute.attributes, context: nil)
-            return estimatedFrame
-        } else {
-            
-            return nil
-        }
-    }
+    }    
 }
