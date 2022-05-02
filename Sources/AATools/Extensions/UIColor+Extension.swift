@@ -26,6 +26,7 @@ extension UIColor {
     /// ```
     /// let color = UIColor(hexValue: 0x2980b9)
     /// ```
+    public
     convenience init(hexValue: UInt64) {
         self.init(
             red: (hexValue & 0xFF0000) >> 16,
