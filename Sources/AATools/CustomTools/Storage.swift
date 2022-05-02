@@ -5,7 +5,7 @@
 //  Created by Aafaq on 29/03/2022.
 //
 
-
+import Foundation
 public class AppStorage<T: Decodable> {
     public let key: String
     
