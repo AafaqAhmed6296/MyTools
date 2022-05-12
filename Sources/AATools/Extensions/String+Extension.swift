@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 extension String {
     public func toInt() -> Int {
@@ -29,7 +30,7 @@ extension String {
     ///   - font: `UIFont` of your need
     ///   - lineHeight: LineHeight of text, default is 10
     /// - Returns: returns the estimated frame that is needed for the string
-    public func estimatedFrameOfString(widthOfLabel: CGFloat, font: UIFont, lineHeight: CGFloat=10) -> CGRect {
+    public func estimatedHeightOfString(widthOfLabel: CGFloat, font: UIFont, lineHeight: CGFloat=10, kern: CGFloat=0) -> CGFloat {
 
         let size = CGSize(width: widthOfLabel, height: 1000)
         
@@ -37,11 +38,64 @@ extension String {
         paragraphStyle.minimumLineHeight = lineHeight
         paragraphStyle.maximumLineHeight = lineHeight
         
-        let attributes = [NSAttributedString.Key.font : font, .paragraphStyle: paragraphStyle]
+        let attributes = [
+            NSAttributedString.Key.font : font, .paragraphStyle: paragraphStyle,
+            NSAttributedString.Key.kern : kern
+        ] as [ NSAttributedString.Key: Any ]
+        
+        let estimatedFrame = NSString(string: self).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+        
+        return estimatedFrame.height
+    }
+    
+    /// Use if you want the estimated frame (box) for string
+    /// - Parameters:
+    ///   - widthOfLabel: width of the label for whom you want the frame
+    ///   - font: `UIFont` of your need
+    ///   - lineHeight: LineHeight of text, default is 10
+    /// - Returns: returns the estimated frame that is needed for the string
+    @available(*, deprecated, message: "method name is changed to estimatedHeightOfString and return type is changed CGFloat, use new method instead", renamed: "estimatedHeightOfString(widthOfLabel:font:lineHeight:kern:)")
+    public func estimatedFrameOfString(widthOfLabel: CGFloat, font: UIFont, lineHeight: CGFloat=10, kern: CGFloat=0) -> CGRect {
+
+        let size = CGSize(width: widthOfLabel, height: 1000)
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.minimumLineHeight = lineHeight
+        paragraphStyle.maximumLineHeight = lineHeight
+        
+        let attributes = [
+            NSAttributedString.Key.font : font, .paragraphStyle: paragraphStyle,
+            NSAttributedString.Key.kern : kern
+        ] as [NSAttributedString.Key: Any]
         
         let estimatedFrame = NSString(string: self).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
         
         return estimatedFrame
+    }
+    
+    /// Use if you want the estimated frame (box) for string
+    /// - Parameters:
+    ///   - heightOfLabel: height of the label for whom you want the frame
+    ///   - font: `UIFont` of your need
+    ///   - lineHeight: LineHeight of text, default is 10
+    ///   - kern: kerning of the text
+    /// - Returns: returns the estimated frame that is needed for the string
+    public func estimatedWidthOfString(heightOfLabel: CGFloat, font: UIFont, lineHeight: CGFloat=10, kern: CGFloat=0) -> CGFloat {
+
+        let size = CGSize(width: 10000, height: heightOfLabel)
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.minimumLineHeight = lineHeight
+        paragraphStyle.maximumLineHeight = lineHeight
+        
+        let attributes = [
+            NSAttributedString.Key.font : font, .paragraphStyle: paragraphStyle,
+            NSAttributedString.Key.kern : kern
+        ] as [NSAttributedString.Key : Any]
+        
+        let estimatedFrame = NSString(string: self).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+        
+        return estimatedFrame.width
     }
 
 }

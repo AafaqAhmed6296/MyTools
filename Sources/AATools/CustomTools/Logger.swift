@@ -1,11 +1,14 @@
 
 
 
-
-
-
 public struct Debug {
+    public static var isDebugModeEnable = true
+    
     public static func log(message: String, values: Any? ) {
+        
+        guard isDebugModeEnable else {
+            return
+        }
         
         if let variable = values {
             print("MyDEBUG, \(message): \(variable)")
@@ -15,8 +18,12 @@ public struct Debug {
 
     }
     
-    @available(*, deprecated, message: "variable parameter is changed to value, use value i", renamed: "log(message:values:)")
+    @available(*, deprecated, message: "variable parameter is changed to value, use value instead", renamed: "log(message:values:)")
     public static func log(message: String, variable: Any? ) {
+        
+        guard isDebugModeEnable else {
+            return
+        }
         
         if let variable = variable {
             print("MyDEBUG, \(message): \(variable)")
@@ -26,7 +33,12 @@ public struct Debug {
 
     }
     
-    public static func log(message: String, values: Any...) {
+    public static func log(message: String, values: Any
+                           ...) {
+        guard isDebugModeEnable else {
+            return
+        }
+        
         if values.isEmpty  {
             print("MyDEBUG, \(message)")
         }else{

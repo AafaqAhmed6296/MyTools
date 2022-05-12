@@ -24,6 +24,6 @@ public struct AppFont: RawRepresentable, Equatable, Hashable {
     
     public typealias RawValue = String
     
-    static let system = AppFont(rawValue: "system")!
+    public static let system = AppFont(rawValue: "system")!
 }
 
