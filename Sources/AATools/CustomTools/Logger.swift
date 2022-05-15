@@ -1,7 +1,14 @@
 
 
+public func printd(_ values: Any...) {
+    print("AADEBUG: ", terminator: "")
+    for (index, value) in values.enumerated() {
+        print(value, terminator: (index + 1) == values.count ? "\n" : ", ")
+    }
+}
 
 public struct Debug {
+    private static var debugMessage = "AADEBUG: "
     public static var isDebugModeEnable = true
     
     public static func log(message: String, values: Any? ) {
@@ -11,9 +18,9 @@ public struct Debug {
         }
         
         if let variable = values {
-            print("MyDEBUG, \(message): \(variable)")
+            print("\(debugMessage)\(message): \(variable)")
         } else {
-            print("MyDEBUG, \(message)")
+            print("AADEBUG, \(message)")
         }
 
     }
@@ -26,13 +33,14 @@ public struct Debug {
         }
         
         if let variable = variable {
-            print("MyDEBUG, \(message): \(variable)")
+            print("\(debugMessage)\(message): \(variable)")
         } else {
-            print("MyDEBUG, \(message)")
+            print("\(debugMessage)\(message)")
         }
 
     }
     
+    @available(AAToolsTests, deprecated, message: "This is deprecated")
     public static func log(message: String, values: Any
                            ...) {
         guard isDebugModeEnable else {
@@ -40,22 +48,12 @@ public struct Debug {
         }
         
         if values.isEmpty  {
-            print("MyDEBUG, \(message)")
+            print("\(debugMessage)\(message)")
         }else{
-            var string = "MyDEBUG, \(message): "
-            let count = values.count - 1
-            var i = 0
-            for value in values {
-                
-                if count == i {
-                    string += "\(value)"
-                } else {
-                    string += "\(value), "
-                }
-                
-                i += 1
+            print("\(debugMessage)", terminator: "")
+            for (index, value) in values.enumerated() {
+                print(value, terminator: (index + 1) == values.count ? "\n" : ", ")
             }
-            print(string)
         }
     }
 }

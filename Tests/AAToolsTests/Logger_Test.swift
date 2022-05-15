@@ -15,12 +15,12 @@ final class LoggerTest: XCTestCase {
     func test_log() {
         
         
-        Debug.isDebugModeEnable = false
+        Debug.isDebugModeEnable = true
         Debug.log(message: "Hello", values: 1, 2, 3, "Hello")
         Debug.log(message: "Hello", values: "Hello", 1, 3, 4)
         Debug.log(message: "Hello", variable: nil)
         
-        
+        printd(1,2,34)
     }
 
     static var allTests = [
