@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 extension NSAttributedString {
     
@@ -18,7 +19,8 @@ extension NSAttributedString {
         sSColor color2: UIColor=UIColor.black,
         sSFont font2: UIFont=UIFont.systemFont(ofSize: 16),
         lineHeight: CGFloat=NSParagraphStyle().minimumLineHeight,
-        lineBreakMode: NSLineBreakMode = .byTruncatingTail
+        lineBreakMode: NSLineBreakMode = .byTruncatingTail,
+        kern1: CGFloat = 0
     ) -> NSMutableAttributedString {
         
         let paragraphStyle = NSMutableParagraphStyle()
@@ -27,6 +29,8 @@ extension NSAttributedString {
         paragraphStyle.lineBreakMode = lineBreakMode
         
         let attString = NSMutableAttributedString(string: string1, attributes: [NSAttributedString.Key.font : font1, .foregroundColor: color1, .paragraphStyle: paragraphStyle ])
+        
+        attString.addAttributes([NSAttributedString.Key.kern : kern1], range: NSRange(location: 0, length: attString.length - 1))
         
         if string2 != "" {
             attString.append(NSAttributedString(string: string2, attributes: [NSAttributedString.Key.font : font2, .foregroundColor: color2, .paragraphStyle: paragraphStyle ]))
