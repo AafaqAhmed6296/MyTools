@@ -99,7 +99,7 @@ extension UIViewController {
     }
     
     @objc
-    public func handleDismiss() {
+    open func handleDismiss() {
         self.view.endEditing(true)
         self.view.endEditing(false)
     }
