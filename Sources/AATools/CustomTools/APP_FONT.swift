@@ -12,8 +12,12 @@ import Foundation
 /// Extend as Below
 /// ```
 /// extension AppFont {
-///     static let font = AppFont(rawValue: "YourFontName")!
+///     static let regular = AppFont(rawValue: "YourFontName")!
 /// }
+/// ```
+/// Utilize as below
+/// ```
+///  let font: UIFont = .appFont(style: .regular, size: 16)
 /// ```
 public struct AppFont: RawRepresentable, Equatable, Hashable {
     public var rawValue: String

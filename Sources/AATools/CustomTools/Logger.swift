@@ -26,7 +26,7 @@ public struct Debug {
     }
     
     @available(*, deprecated, message: "variable parameter is changed to value, use value instead", renamed: "log(message:values:)")
-    public static func log(message: String, variable: Any? ) {
+    public static func log(message: String, variable: Any?) {
         
         guard isDebugModeEnable else {
             return
@@ -37,12 +37,11 @@ public struct Debug {
         } else {
             print("\(debugMessage)\(message)")
         }
-
     }
     
-    @available(AAToolsTests, deprecated, message: "This is deprecated")
-    public static func log(message: String, values: Any
-                           ...) {
+    public static func log(
+        message: String, values: Any...
+    ) {
         guard isDebugModeEnable else {
             return
         }

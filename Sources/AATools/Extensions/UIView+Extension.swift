@@ -19,6 +19,19 @@ extension UIView {
         layer.masksToBounds = true
     }
     
+    /// Anchors a view to its superview with specified constraints and returns the anchored constraints.
+    /// - Parameters:
+    ///   - top: The top anchor of the view to anchor to its superview.
+    ///   - leading: The leading anchor of the view to anchor to its superview.
+    ///   - bottom: The bottom anchor of the view to anchor to its superview.
+    ///   - trailing: The trailing anchor of the view to anchor to its superview.
+    ///   - paddingTop: The top padding of the view from its top anchor.
+    ///   - paddingLeft: The left padding of the view from its leading anchor.
+    ///   - paddingBottom: The bottom padding of the view from its bottom anchor.
+    ///   - paddingRight: The right padding of the view from its trailing anchor.
+    ///   - width: The width of the view.
+    ///   - height: The height of the view.
+    /// - Returns: The constraints that anchor the view to its superview.
     @discardableResult
     public
     func anchor(top: NSLayoutYAxisAnchor? = nil,
@@ -63,6 +76,11 @@ extension UIView {
         return anchoredConstraints
     }
     
+    /// Centers the view horizontally and vertically in the specified view.
+    ///
+    /// - Parameters:
+    ///   - view: The view in which the current view will be centered.
+    ///   - yConstant: The optional constant value to adjust the vertical centering.
     public func center(inView view: UIView, yConstant: CGFloat? = 0) {
         translatesAutoresizingMaskIntoConstraints = false
         centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -152,6 +170,7 @@ extension UIView {
     }
 }
 
+//MARK: - Measurement Values
 extension UIView {
     
     /// Get the width of view
@@ -185,6 +204,7 @@ extension UIView {
     }
 }
 
+//MARK: - Stacking
 extension UIView {
     fileprivate func _stack(_ axis: NSLayoutConstraint.Axis = .vertical, views: [UIView], spacing: CGFloat=0, alignment: UIStackView.Alignment = .fill, distribution: UIStackView.Distribution = .fill) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: views)

@@ -6,10 +6,6 @@
 //
 
 import Foundation
-
-
-
-
 /// This property wrapper can be use to sanitzed string for particular `CharacterSet`
 ///
 /// To user this to wrap the property with this property wrapper, for example if you have a following property inside struct

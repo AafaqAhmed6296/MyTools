@@ -15,16 +15,16 @@ extension UIViewController {
     public static let dismissHud = JGProgressHUD(style: .dark)
     public static let selfDismissHud = JGProgressHUD(style: .dark)
     
-    public func showHUD(_ show: Bool, withTitle title: String? = nil, error: Error? = nil) {
+    public func showHUD(_ show: Bool, withTitle title: () -> String? = { "" }, error: Error? = nil) {
         view.endEditing(true)
         
         if let err = error {
-            UIViewController.dismissHud.textLabel.text = title
+            UIViewController.dismissHud.textLabel.text = title()
             UIViewController.dismissHud.detailTextLabel.text = err.localizedDescription
             UIViewController.dismissHud.show(in: view)
             UIViewController.dismissHud.dismiss(afterDelay: 4)
         }
-        else if let title = title {
+        else if let title = title() {
             UIViewController.hud.textLabel.text = title
             UIViewController.hud.show(in: view)
         }

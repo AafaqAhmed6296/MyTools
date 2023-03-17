@@ -35,6 +35,18 @@ extension Double {
         return "\(self)"
     }
     
+    public func toAuto() -> Int {
+        Int(self)
+    }
+    
+    public func toAuto() -> String {
+        "\(self)"
+    }
+    
+    public func toAuto() -> CGFloat {
+        CGFloat(self)
+    }
+    
     /// Convert the double to String without any decimal places of double
     /// - Returns: returns the String value of Double without floating point.
     /// - For example:

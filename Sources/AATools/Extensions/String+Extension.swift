@@ -103,27 +103,43 @@ extension String {
 //MARK: - TextValidation
 
 extension String {
+    /// This function checks if a given string is a valid name
+    ///
+    /// - Returns: A boolean value indicating whether the string is a valid name or not
     func isValidName() -> Bool {
         let inputRegEx = "^[a-zA-Z\\_]{2,25}$"
         let inputpred = NSPredicate(format: "SELF MATCHES %@", inputRegEx)
         return inputpred.evaluate(with:self)
     }
+    
+    /// This function checks if a given string is a valid email
+    ///
+    /// - Returns: A boolean value indicating whether the string is a valid email or not
     func isValidEmail() -> Bool {
         let inputRegEx = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[A-Za-z]{2,64}"
         let inputpred = NSPredicate(format: "SELF MATCHES %@", inputRegEx)
         return inputpred.evaluate(with:self)
     }
+    
+    /// This function checks if a given string is a valid phone number
+    ///
+    /// - Returns: A boolean value indicating whether the string is a valid phone or not
     func isValidPhone() -> Bool {
         let inputRegEx = "^((\\+)|(00))[0-9]{6,14}$"
         let inputpred = NSPredicate(format: "SELF MATCHES %@", inputRegEx)
         return inputpred.evaluate(with:self)
     }
+    
+    /// Function to check if the given password is valid or not.
+    ///
+    /// - Returns: A boolean value indicating if the password is valid or not.
     func isValidPassword() -> Bool {
         let inputRegEx = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*()-_+={}?>.<,:;~`']{8,}$"
         let inputpred = NSPredicate(format: "SELF MATCHES %@", inputRegEx)
         return inputpred.evaluate(with:self)
     }
     
+    /// Returns a filtered phone number string by removing characters from a given string.
     public func filterPhoneNumber() -> String {
         return String(self.filter {!" ()._-\n\t\r".contains($0)})
     }

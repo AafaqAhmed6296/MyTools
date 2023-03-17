@@ -10,7 +10,6 @@ import UIKit
 
 extension UIFont {
     public static func appFont(style: AppFont, size: CGFloat) -> UIFont {
-        
         if style == .system {
             return .systemFont(ofSize: size)
         } else {
