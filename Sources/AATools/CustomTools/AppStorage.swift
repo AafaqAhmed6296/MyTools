@@ -70,10 +70,13 @@ extension AppStorage {
     ///- Parameter type: The type of the object to retrieve from the user's default storage.
     ///- Returns: The retrieved object of the specified type.
     ///- Throws: An error if decoding the object from JSON fails.
-    public func retrieve<U>(type: U.Type) throws -> U where U: Codable {
+    public func retrieve<U>(type: U.Type) throws -> U? where U: Codable {
         let decoder = JSONDecoder()
         do {
-            let decoded = try decoder.decode(type, from: self.value as! Data)
+            guard let value = self.value else {
+                return nil
+            }
+            let decoded = try decoder.decode(type, from: value as! Data)
             return decoded
         } catch {
             throw error
